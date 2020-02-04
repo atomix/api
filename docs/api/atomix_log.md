@@ -62,7 +62,6 @@
 | header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
 | index | [int64](#int64) |  |  |
 | value | [bytes](#bytes) |  |  |
-| version | [int64](#int64) |  |  |
 
 
 
@@ -82,7 +81,6 @@
 | index | [int64](#int64) |  |  |
 | timestamp | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | previous_value | [bytes](#bytes) |  |  |
-| previous_version | [int64](#int64) |  |  |
 
 
 
@@ -210,7 +208,6 @@
 | type | [EventResponse.Type](#atomix.log.EventResponse.Type) |  |  |
 | index | [int64](#int64) |  |  |
 | value | [bytes](#bytes) |  |  |
-| version | [int64](#int64) |  |  |
 | timestamp | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
 
@@ -276,7 +273,6 @@
 | header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
 | index | [int64](#int64) |  |  |
 | value | [bytes](#bytes) |  |  |
-| version | [int64](#int64) |  |  |
 | timestamp | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
 
@@ -311,7 +307,6 @@
 | header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
 | index | [int64](#int64) |  |  |
 | value | [bytes](#bytes) |  |  |
-| version | [int64](#int64) |  |  |
 | timestamp | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
 
@@ -375,7 +370,6 @@
 | header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
 | index | [int64](#int64) |  |  |
 | value | [bytes](#bytes) |  |  |
-| version | [int64](#int64) |  |  |
 | timestamp | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
 
@@ -410,7 +404,6 @@
 | header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
 | index | [int64](#int64) |  |  |
 | value | [bytes](#bytes) |  |  |
-| version | [int64](#int64) |  |  |
 | timestamp | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
 
@@ -445,7 +438,6 @@
 | header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
 | index | [int64](#int64) |  |  |
 | value | [bytes](#bytes) |  |  |
-| version | [int64](#int64) |  |  |
 | timestamp | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
 
@@ -464,7 +456,6 @@
 | header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
 | index | [int64](#int64) |  |  |
 | value | [bytes](#bytes) |  |  |
-| version | [int64](#int64) |  |  |
 | timestamp | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
 
@@ -484,7 +475,6 @@
 | status | [ResponseStatus](#atomix.log.ResponseStatus) |  |  |
 | index | [int64](#int64) |  |  |
 | previous_value | [bytes](#bytes) |  |  |
-| previous_version | [int64](#int64) |  |  |
 
 
 
