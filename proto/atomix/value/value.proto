@@ -2,24 +2,14 @@ syntax = "proto3";
 
 package atomix.value;
 
-import "google/protobuf/duration.proto";
 import "atomix/headers/headers.proto";
 import "gogoproto/gogo.proto";
 
 message CreateRequest {
     atomix.headers.RequestHeader header = 1;
-    google.protobuf.Duration timeout = 2 [(gogoproto.stdduration) = true];
 }
 
 message CreateResponse {
-    atomix.headers.ResponseHeader header = 1;
-}
-
-message KeepAliveRequest {
-    atomix.headers.RequestHeader header = 1;
-}
-
-message KeepAliveResponse {
     atomix.headers.ResponseHeader header = 1;
 }
 
@@ -72,31 +62,22 @@ message EventResponse {
     }
 }
 
-// Value service
+// ValueService implements a distributed atomic value
 service ValueService {
 
-    rpc Create (CreateRequest) returns (CreateResponse) {
+    // Create creates a new value session
+    rpc Create (CreateRequest) returns (CreateResponse);
 
-    }
+    // Close closes the value session
+    rpc Close (CloseRequest) returns (CloseResponse);
 
-    rpc KeepAlive (KeepAliveRequest) returns (KeepAliveResponse) {
+    // Set sets the value
+    rpc Set (SetRequest) returns (SetResponse);
 
-    }
+    // Get gets the value
+    rpc Get (GetRequest) returns (GetResponse);
 
-    rpc Close (CloseRequest) returns (CloseResponse) {
-
-    }
-
-    rpc Set (SetRequest) returns (SetResponse) {
-
-    }
-
-    rpc Get (GetRequest) returns (GetResponse) {
-
-    }
-
-    rpc Events (EventRequest) returns (stream EventResponse) {
-
-    }
+    // Events listens for value change events
+    rpc Events (EventRequest) returns (stream EventResponse);
 
 }

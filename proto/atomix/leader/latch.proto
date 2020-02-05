@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-import "google/protobuf/duration.proto";
 import "atomix/headers/headers.proto";
 import "gogoproto/gogo.proto";
 
@@ -8,18 +7,9 @@ package atomix.leader;
 
 message CreateRequest {
     atomix.headers.RequestHeader header = 1;
-    google.protobuf.Duration timeout = 2 [(gogoproto.stdduration) = true];
 }
 
 message CreateResponse {
-    atomix.headers.ResponseHeader header = 1;
-}
-
-message KeepAliveRequest {
-    atomix.headers.RequestHeader header = 1;
-}
-
-message KeepAliveResponse {
     atomix.headers.ResponseHeader header = 1;
 }
 
@@ -74,16 +64,19 @@ message Latch {
 // Leader latch service
 service LeaderLatchService {
 
-    rpc Create(CreateRequest) returns (CreateResponse);
+    // Create creates a leader latch
+    rpc Create (CreateRequest) returns (CreateResponse);
 
-    rpc KeepAlive(KeepAliveRequest) returns (KeepAliveResponse);
+    // Close closes a leader latch
+    rpc Close (CloseRequest) returns (CloseResponse);
 
-    rpc Close(CloseRequest) returns (CloseResponse);
+    // Latch attempts to acquire the leader latch
+    rpc Latch (LatchRequest) returns (LatchResponse);
 
-    rpc Latch(LatchRequest) returns (LatchResponse);
+    // Get gets the current leader
+    rpc Get (GetRequest) returns (GetResponse);
 
-    rpc Get(GetRequest) returns (GetResponse);
-
-    rpc Events(EventRequest) returns (stream EventResponse);
+    // Events listens for leader change events
+    rpc Events (EventRequest) returns (stream EventResponse);
 
 }

@@ -20,8 +20,6 @@
     - [FirstEntryResponse](#atomix.indexedmap.FirstEntryResponse)
     - [GetRequest](#atomix.indexedmap.GetRequest)
     - [GetResponse](#atomix.indexedmap.GetResponse)
-    - [KeepAliveRequest](#atomix.indexedmap.KeepAliveRequest)
-    - [KeepAliveResponse](#atomix.indexedmap.KeepAliveResponse)
     - [LastEntryRequest](#atomix.indexedmap.LastEntryRequest)
     - [LastEntryResponse](#atomix.indexedmap.LastEntryResponse)
     - [NextEntryRequest](#atomix.indexedmap.NextEntryRequest)
@@ -125,7 +123,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-| timeout | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
 
 
 
@@ -323,36 +320,6 @@
 | version | [int64](#int64) |  |  |
 | created | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-
-
-
-
-
-
-<a name="atomix.indexedmap.KeepAliveRequest"></a>
-
-### KeepAliveRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-
-
-
-
-
-
-<a name="atomix.indexedmap.KeepAliveResponse"></a>
-
-### KeepAliveResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
 
 
 
@@ -667,22 +634,21 @@ IndexedMap service
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.indexedmap.CreateRequest) | [CreateResponse](#atomix.indexedmap.CreateResponse) |  |
-| KeepAlive | [KeepAliveRequest](#atomix.indexedmap.KeepAliveRequest) | [KeepAliveResponse](#atomix.indexedmap.KeepAliveResponse) |  |
-| Close | [CloseRequest](#atomix.indexedmap.CloseRequest) | [CloseResponse](#atomix.indexedmap.CloseResponse) |  |
-| Size | [SizeRequest](#atomix.indexedmap.SizeRequest) | [SizeResponse](#atomix.indexedmap.SizeResponse) |  |
-| Exists | [ExistsRequest](#atomix.indexedmap.ExistsRequest) | [ExistsResponse](#atomix.indexedmap.ExistsResponse) |  |
-| Put | [PutRequest](#atomix.indexedmap.PutRequest) | [PutResponse](#atomix.indexedmap.PutResponse) |  |
-| Replace | [ReplaceRequest](#atomix.indexedmap.ReplaceRequest) | [ReplaceResponse](#atomix.indexedmap.ReplaceResponse) |  |
-| Get | [GetRequest](#atomix.indexedmap.GetRequest) | [GetResponse](#atomix.indexedmap.GetResponse) |  |
-| FirstEntry | [FirstEntryRequest](#atomix.indexedmap.FirstEntryRequest) | [FirstEntryResponse](#atomix.indexedmap.FirstEntryResponse) |  |
-| LastEntry | [LastEntryRequest](#atomix.indexedmap.LastEntryRequest) | [LastEntryResponse](#atomix.indexedmap.LastEntryResponse) |  |
-| PrevEntry | [PrevEntryRequest](#atomix.indexedmap.PrevEntryRequest) | [PrevEntryResponse](#atomix.indexedmap.PrevEntryResponse) |  |
-| NextEntry | [NextEntryRequest](#atomix.indexedmap.NextEntryRequest) | [NextEntryResponse](#atomix.indexedmap.NextEntryResponse) |  |
-| Remove | [RemoveRequest](#atomix.indexedmap.RemoveRequest) | [RemoveResponse](#atomix.indexedmap.RemoveResponse) |  |
-| Clear | [ClearRequest](#atomix.indexedmap.ClearRequest) | [ClearResponse](#atomix.indexedmap.ClearResponse) |  |
-| Events | [EventRequest](#atomix.indexedmap.EventRequest) | [EventResponse](#atomix.indexedmap.EventResponse) stream |  |
-| Entries | [EntriesRequest](#atomix.indexedmap.EntriesRequest) | [EntriesResponse](#atomix.indexedmap.EntriesResponse) stream |  |
+| Create | [CreateRequest](#atomix.indexedmap.CreateRequest) | [CreateResponse](#atomix.indexedmap.CreateResponse) | Create creates an indexed map |
+| Close | [CloseRequest](#atomix.indexedmap.CloseRequest) | [CloseResponse](#atomix.indexedmap.CloseResponse) | Close closes an indexed map |
+| Size | [SizeRequest](#atomix.indexedmap.SizeRequest) | [SizeResponse](#atomix.indexedmap.SizeResponse) | Size returns the size of the map |
+| Exists | [ExistsRequest](#atomix.indexedmap.ExistsRequest) | [ExistsResponse](#atomix.indexedmap.ExistsResponse) | Exists checks whether a key exists in the map |
+| Put | [PutRequest](#atomix.indexedmap.PutRequest) | [PutResponse](#atomix.indexedmap.PutResponse) | Put puts an entry into the map |
+| Replace | [ReplaceRequest](#atomix.indexedmap.ReplaceRequest) | [ReplaceResponse](#atomix.indexedmap.ReplaceResponse) | Replace performs a check-and-set operation on an entry in the map |
+| Get | [GetRequest](#atomix.indexedmap.GetRequest) | [GetResponse](#atomix.indexedmap.GetResponse) | Get gets the entry for a key |
+| FirstEntry | [FirstEntryRequest](#atomix.indexedmap.FirstEntryRequest) | [FirstEntryResponse](#atomix.indexedmap.FirstEntryResponse) | FirstEntry gets the first entry in the map |
+| LastEntry | [LastEntryRequest](#atomix.indexedmap.LastEntryRequest) | [LastEntryResponse](#atomix.indexedmap.LastEntryResponse) | LastEntry gets the last entry in the map |
+| PrevEntry | [PrevEntryRequest](#atomix.indexedmap.PrevEntryRequest) | [PrevEntryResponse](#atomix.indexedmap.PrevEntryResponse) | PrevEntry gets the previous entry in the map |
+| NextEntry | [NextEntryRequest](#atomix.indexedmap.NextEntryRequest) | [NextEntryResponse](#atomix.indexedmap.NextEntryResponse) | NextEntry gets the next entry in the map |
+| Remove | [RemoveRequest](#atomix.indexedmap.RemoveRequest) | [RemoveResponse](#atomix.indexedmap.RemoveResponse) | Remove removes an entry from the map |
+| Clear | [ClearRequest](#atomix.indexedmap.ClearRequest) | [ClearResponse](#atomix.indexedmap.ClearResponse) | Clear removes all entries from the map |
+| Events | [EventRequest](#atomix.indexedmap.EventRequest) | [EventResponse](#atomix.indexedmap.EventResponse) stream | Events listens for change events |
+| Entries | [EntriesRequest](#atomix.indexedmap.EntriesRequest) | [EntriesResponse](#atomix.indexedmap.EntriesResponse) stream | Entries lists all entries in the map |
 
  
 

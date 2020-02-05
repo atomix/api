@@ -267,17 +267,17 @@
 <a name="atomix.counter.CounterService"></a>
 
 ### CounterService
-
+CounterService implements a distributed counter
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.counter.CreateRequest) | [CreateResponse](#atomix.counter.CreateResponse) |  |
-| Close | [CloseRequest](#atomix.counter.CloseRequest) | [CloseResponse](#atomix.counter.CloseResponse) |  |
-| Set | [SetRequest](#atomix.counter.SetRequest) | [SetResponse](#atomix.counter.SetResponse) |  |
-| Get | [GetRequest](#atomix.counter.GetRequest) | [GetResponse](#atomix.counter.GetResponse) |  |
-| Increment | [IncrementRequest](#atomix.counter.IncrementRequest) | [IncrementResponse](#atomix.counter.IncrementResponse) |  |
-| Decrement | [DecrementRequest](#atomix.counter.DecrementRequest) | [DecrementResponse](#atomix.counter.DecrementResponse) |  |
-| CheckAndSet | [CheckAndSetRequest](#atomix.counter.CheckAndSetRequest) | [CheckAndSetResponse](#atomix.counter.CheckAndSetResponse) |  |
+| Create | [CreateRequest](#atomix.counter.CreateRequest) | [CreateResponse](#atomix.counter.CreateResponse) | Create creates a counter |
+| Close | [CloseRequest](#atomix.counter.CloseRequest) | [CloseResponse](#atomix.counter.CloseResponse) | Close closes the counter |
+| Set | [SetRequest](#atomix.counter.SetRequest) | [SetResponse](#atomix.counter.SetResponse) | Set sets the counter value |
+| Get | [GetRequest](#atomix.counter.GetRequest) | [GetResponse](#atomix.counter.GetResponse) | Get gets the current counter value |
+| Increment | [IncrementRequest](#atomix.counter.IncrementRequest) | [IncrementResponse](#atomix.counter.IncrementResponse) | Increment increments the counter value |
+| Decrement | [DecrementRequest](#atomix.counter.DecrementRequest) | [DecrementResponse](#atomix.counter.DecrementResponse) | Decrement decrements the counter value |
+| CheckAndSet | [CheckAndSetRequest](#atomix.counter.CheckAndSetRequest) | [CheckAndSetResponse](#atomix.counter.CheckAndSetResponse) | CheckAndSet performs a check-and-set operation on the counter value |
 
  
 

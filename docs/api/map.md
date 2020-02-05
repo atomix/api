@@ -18,8 +18,6 @@
     - [ExistsResponse](#atomix.map.ExistsResponse)
     - [GetRequest](#atomix.map.GetRequest)
     - [GetResponse](#atomix.map.GetResponse)
-    - [KeepAliveRequest](#atomix.map.KeepAliveRequest)
-    - [KeepAliveResponse](#atomix.map.KeepAliveResponse)
     - [PutRequest](#atomix.map.PutRequest)
     - [PutResponse](#atomix.map.PutResponse)
     - [RemoveRequest](#atomix.map.RemoveRequest)
@@ -117,7 +115,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-| timeout | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
 
 
 
@@ -273,36 +270,6 @@
 | version | [int64](#int64) |  |  |
 | created | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 | updated | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-
-
-
-
-
-
-<a name="atomix.map.KeepAliveRequest"></a>
-
-### KeepAliveRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-
-
-
-
-
-
-<a name="atomix.map.KeepAliveResponse"></a>
-
-### KeepAliveResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
 
 
 
@@ -494,22 +461,21 @@
 <a name="atomix.map.MapService"></a>
 
 ### MapService
-Map service
+MapService implements a distributed map
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.map.CreateRequest) | [CreateResponse](#atomix.map.CreateResponse) |  |
-| KeepAlive | [KeepAliveRequest](#atomix.map.KeepAliveRequest) | [KeepAliveResponse](#atomix.map.KeepAliveResponse) |  |
-| Close | [CloseRequest](#atomix.map.CloseRequest) | [CloseResponse](#atomix.map.CloseResponse) |  |
-| Size | [SizeRequest](#atomix.map.SizeRequest) | [SizeResponse](#atomix.map.SizeResponse) |  |
-| Exists | [ExistsRequest](#atomix.map.ExistsRequest) | [ExistsResponse](#atomix.map.ExistsResponse) |  |
-| Put | [PutRequest](#atomix.map.PutRequest) | [PutResponse](#atomix.map.PutResponse) |  |
-| Replace | [ReplaceRequest](#atomix.map.ReplaceRequest) | [ReplaceResponse](#atomix.map.ReplaceResponse) |  |
-| Get | [GetRequest](#atomix.map.GetRequest) | [GetResponse](#atomix.map.GetResponse) |  |
-| Remove | [RemoveRequest](#atomix.map.RemoveRequest) | [RemoveResponse](#atomix.map.RemoveResponse) |  |
-| Clear | [ClearRequest](#atomix.map.ClearRequest) | [ClearResponse](#atomix.map.ClearResponse) |  |
-| Events | [EventRequest](#atomix.map.EventRequest) | [EventResponse](#atomix.map.EventResponse) stream |  |
-| Entries | [EntriesRequest](#atomix.map.EntriesRequest) | [EntriesResponse](#atomix.map.EntriesResponse) stream |  |
+| Create | [CreateRequest](#atomix.map.CreateRequest) | [CreateResponse](#atomix.map.CreateResponse) | Create creates an indexed map |
+| Close | [CloseRequest](#atomix.map.CloseRequest) | [CloseResponse](#atomix.map.CloseResponse) | Close closes an indexed map |
+| Size | [SizeRequest](#atomix.map.SizeRequest) | [SizeResponse](#atomix.map.SizeResponse) | Size returns the size of the map |
+| Exists | [ExistsRequest](#atomix.map.ExistsRequest) | [ExistsResponse](#atomix.map.ExistsResponse) | Exists checks whether a key exists in the map |
+| Put | [PutRequest](#atomix.map.PutRequest) | [PutResponse](#atomix.map.PutResponse) | Put puts an entry into the map |
+| Replace | [ReplaceRequest](#atomix.map.ReplaceRequest) | [ReplaceResponse](#atomix.map.ReplaceResponse) | Replace performs a check-and-set operation on an entry in the map |
+| Get | [GetRequest](#atomix.map.GetRequest) | [GetResponse](#atomix.map.GetResponse) | Get gets the entry for a key |
+| Remove | [RemoveRequest](#atomix.map.RemoveRequest) | [RemoveResponse](#atomix.map.RemoveResponse) | Remove removes an entry from the map |
+| Clear | [ClearRequest](#atomix.map.ClearRequest) | [ClearResponse](#atomix.map.ClearResponse) | Clear removes all entries from the map |
+| Events | [EventRequest](#atomix.map.EventRequest) | [EventResponse](#atomix.map.EventResponse) stream | Events listens for change events |
+| Entries | [EntriesRequest](#atomix.map.EntriesRequest) | [EntriesResponse](#atomix.map.EntriesResponse) stream | Entries lists all entries in the map |
 
  
 

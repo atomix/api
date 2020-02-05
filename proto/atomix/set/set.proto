@@ -2,24 +2,14 @@ syntax = "proto3";
 
 package atomix.set;
 
-import "google/protobuf/duration.proto";
 import "atomix/headers/headers.proto";
 import "gogoproto/gogo.proto";
 
 message CreateRequest {
     atomix.headers.RequestHeader header = 1;
-    google.protobuf.Duration timeout = 2 [(gogoproto.stdduration) = true];
 }
 
 message CreateResponse {
-    atomix.headers.ResponseHeader header = 1;
-}
-
-message KeepAliveRequest {
-    atomix.headers.RequestHeader header = 1;
-}
-
-message KeepAliveResponse {
     atomix.headers.ResponseHeader header = 1;
 }
 
@@ -116,43 +106,31 @@ enum ResponseStatus {
 // Set service
 service SetService {
 
-    rpc Create (CreateRequest) returns (CreateResponse) {
+    // Create creates a set session
+    rpc Create (CreateRequest) returns (CreateResponse);
 
-    }
+    // Close closes a set
+    rpc Close (CloseRequest) returns (CloseResponse);
 
-    rpc KeepAlive (KeepAliveRequest) returns (KeepAliveResponse) {
+    // Size gets the number of elements in the set
+    rpc Size (SizeRequest) returns (SizeResponse);
 
-    }
+    // Contains returns whether the set contains a value
+    rpc Contains (ContainsRequest) returns (ContainsResponse);
 
-    rpc Close (CloseRequest) returns (CloseResponse) {
+    // Add adds a value to the set
+    rpc Add (AddRequest) returns (AddResponse);
 
-    }
+    // Remove removes a value from the set
+    rpc Remove (RemoveRequest) returns (RemoveResponse);
 
-    rpc Size (SizeRequest) returns (SizeResponse) {
+    // Clear removes all values from the set
+    rpc Clear (ClearRequest) returns (ClearResponse);
 
-    }
+    // Events listens for set change events
+    rpc Events (EventRequest) returns (stream EventResponse);
 
-    rpc Contains (ContainsRequest) returns (ContainsResponse) {
+    // Iterate iterates through all values in the set
+    rpc Iterate (IterateRequest) returns (stream IterateResponse);
 
-    }
-
-    rpc Add (AddRequest) returns (AddResponse) {
-
-    }
-
-    rpc Remove (RemoveRequest) returns (RemoveResponse) {
-
-    }
-
-    rpc Clear (ClearRequest) returns (ClearResponse) {
-
-    }
-
-    rpc Events (EventRequest) returns (stream EventResponse) {
-
-    }
-
-    rpc Iterate (IterateRequest) returns (stream IterateResponse) {
-
-    }
 }

@@ -12,8 +12,6 @@
     - [EventResponse](#atomix.value.EventResponse)
     - [GetRequest](#atomix.value.GetRequest)
     - [GetResponse](#atomix.value.GetResponse)
-    - [KeepAliveRequest](#atomix.value.KeepAliveRequest)
-    - [KeepAliveResponse](#atomix.value.KeepAliveResponse)
     - [SetRequest](#atomix.value.SetRequest)
     - [SetResponse](#atomix.value.SetResponse)
   
@@ -74,7 +72,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-| timeout | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
 
 
 
@@ -163,36 +160,6 @@
 
 
 
-<a name="atomix.value.KeepAliveRequest"></a>
-
-### KeepAliveRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-
-
-
-
-
-
-<a name="atomix.value.KeepAliveResponse"></a>
-
-### KeepAliveResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
-
-
-
-
-
-
 <a name="atomix.value.SetRequest"></a>
 
 ### SetRequest
@@ -248,16 +215,15 @@
 <a name="atomix.value.ValueService"></a>
 
 ### ValueService
-Value service
+ValueService implements a distributed atomic value
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.value.CreateRequest) | [CreateResponse](#atomix.value.CreateResponse) |  |
-| KeepAlive | [KeepAliveRequest](#atomix.value.KeepAliveRequest) | [KeepAliveResponse](#atomix.value.KeepAliveResponse) |  |
-| Close | [CloseRequest](#atomix.value.CloseRequest) | [CloseResponse](#atomix.value.CloseResponse) |  |
-| Set | [SetRequest](#atomix.value.SetRequest) | [SetResponse](#atomix.value.SetResponse) |  |
-| Get | [GetRequest](#atomix.value.GetRequest) | [GetResponse](#atomix.value.GetResponse) |  |
-| Events | [EventRequest](#atomix.value.EventRequest) | [EventResponse](#atomix.value.EventResponse) stream |  |
+| Create | [CreateRequest](#atomix.value.CreateRequest) | [CreateResponse](#atomix.value.CreateResponse) | Create creates a new value session |
+| Close | [CloseRequest](#atomix.value.CloseRequest) | [CloseResponse](#atomix.value.CloseResponse) | Close closes the value session |
+| Set | [SetRequest](#atomix.value.SetRequest) | [SetResponse](#atomix.value.SetResponse) | Set sets the value |
+| Get | [GetRequest](#atomix.value.GetRequest) | [GetResponse](#atomix.value.GetResponse) | Get gets the value |
+| Events | [EventRequest](#atomix.value.EventRequest) | [EventResponse](#atomix.value.EventResponse) stream | Events listens for value change events |
 
  
 

@@ -18,8 +18,6 @@
     - [EventResponse](#atomix.set.EventResponse)
     - [IterateRequest](#atomix.set.IterateRequest)
     - [IterateResponse](#atomix.set.IterateResponse)
-    - [KeepAliveRequest](#atomix.set.KeepAliveRequest)
-    - [KeepAliveResponse](#atomix.set.KeepAliveResponse)
     - [RemoveRequest](#atomix.set.RemoveRequest)
     - [RemoveResponse](#atomix.set.RemoveResponse)
     - [SizeRequest](#atomix.set.SizeRequest)
@@ -178,7 +176,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-| timeout | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
 
 
 
@@ -258,36 +255,6 @@
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
 | value | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="atomix.set.KeepAliveRequest"></a>
-
-### KeepAliveRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-
-
-
-
-
-
-<a name="atomix.set.KeepAliveResponse"></a>
-
-### KeepAliveResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
 
 
 
@@ -397,16 +364,15 @@ Set service
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.set.CreateRequest) | [CreateResponse](#atomix.set.CreateResponse) |  |
-| KeepAlive | [KeepAliveRequest](#atomix.set.KeepAliveRequest) | [KeepAliveResponse](#atomix.set.KeepAliveResponse) |  |
-| Close | [CloseRequest](#atomix.set.CloseRequest) | [CloseResponse](#atomix.set.CloseResponse) |  |
-| Size | [SizeRequest](#atomix.set.SizeRequest) | [SizeResponse](#atomix.set.SizeResponse) |  |
-| Contains | [ContainsRequest](#atomix.set.ContainsRequest) | [ContainsResponse](#atomix.set.ContainsResponse) |  |
-| Add | [AddRequest](#atomix.set.AddRequest) | [AddResponse](#atomix.set.AddResponse) |  |
-| Remove | [RemoveRequest](#atomix.set.RemoveRequest) | [RemoveResponse](#atomix.set.RemoveResponse) |  |
-| Clear | [ClearRequest](#atomix.set.ClearRequest) | [ClearResponse](#atomix.set.ClearResponse) |  |
-| Events | [EventRequest](#atomix.set.EventRequest) | [EventResponse](#atomix.set.EventResponse) stream |  |
-| Iterate | [IterateRequest](#atomix.set.IterateRequest) | [IterateResponse](#atomix.set.IterateResponse) stream |  |
+| Create | [CreateRequest](#atomix.set.CreateRequest) | [CreateResponse](#atomix.set.CreateResponse) | Create creates a set session |
+| Close | [CloseRequest](#atomix.set.CloseRequest) | [CloseResponse](#atomix.set.CloseResponse) | Close closes a set |
+| Size | [SizeRequest](#atomix.set.SizeRequest) | [SizeResponse](#atomix.set.SizeResponse) | Size gets the number of elements in the set |
+| Contains | [ContainsRequest](#atomix.set.ContainsRequest) | [ContainsResponse](#atomix.set.ContainsResponse) | Contains returns whether the set contains a value |
+| Add | [AddRequest](#atomix.set.AddRequest) | [AddResponse](#atomix.set.AddResponse) | Add adds a value to the set |
+| Remove | [RemoveRequest](#atomix.set.RemoveRequest) | [RemoveResponse](#atomix.set.RemoveResponse) | Remove removes a value from the set |
+| Clear | [ClearRequest](#atomix.set.ClearRequest) | [ClearResponse](#atomix.set.ClearResponse) | Clear removes all values from the set |
+| Events | [EventRequest](#atomix.set.EventRequest) | [EventResponse](#atomix.set.EventResponse) stream | Events listens for set change events |
+| Iterate | [IterateRequest](#atomix.set.IterateRequest) | [IterateResponse](#atomix.set.IterateResponse) stream | Iterate iterates through all values in the set |
 
  
 

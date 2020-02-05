@@ -73,32 +73,26 @@ message CheckAndSetResponse {
     bool succeeded = 2;
 }
 
+// CounterService implements a distributed counter
 service CounterService {
-    rpc Create(CreateRequest) returns (CreateResponse) {
+    // Create creates a counter
+    rpc Create (CreateRequest) returns (CreateResponse);
 
-    }
+    // Close closes the counter
+    rpc Close (CloseRequest) returns (CloseResponse);
 
-    rpc Close(CloseRequest) returns (CloseResponse) {
+    // Set sets the counter value
+    rpc Set (SetRequest) returns (SetResponse);
 
-    }
+    // Get gets the current counter value
+    rpc Get (GetRequest) returns (GetResponse);
 
-    rpc Set(SetRequest) returns (SetResponse) {
+    // Increment increments the counter value
+    rpc Increment (IncrementRequest) returns (IncrementResponse);
 
-    }
+    // Decrement decrements the counter value
+    rpc Decrement (DecrementRequest) returns (DecrementResponse);
 
-    rpc Get(GetRequest) returns (GetResponse) {
-
-    }
-
-    rpc Increment(IncrementRequest) returns (IncrementResponse) {
-
-    }
-
-    rpc Decrement(DecrementRequest) returns (DecrementResponse) {
-
-    }
-
-    rpc CheckAndSet(CheckAndSetRequest) returns (CheckAndSetResponse) {
-
-    }
+    // CheckAndSet performs a check-and-set operation on the counter value
+    rpc CheckAndSet (CheckAndSetRequest) returns (CheckAndSetResponse);
 }

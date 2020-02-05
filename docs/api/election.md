@@ -18,8 +18,6 @@
     - [EvictResponse](#atomix.election.EvictResponse)
     - [GetTermRequest](#atomix.election.GetTermRequest)
     - [GetTermResponse](#atomix.election.GetTermResponse)
-    - [KeepAliveRequest](#atomix.election.KeepAliveRequest)
-    - [KeepAliveResponse](#atomix.election.KeepAliveResponse)
     - [PromoteRequest](#atomix.election.PromoteRequest)
     - [PromoteResponse](#atomix.election.PromoteResponse)
     - [Term](#atomix.election.Term)
@@ -115,7 +113,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-| timeout | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
 
 
 
@@ -264,36 +261,6 @@
 
 
 
-<a name="atomix.election.KeepAliveRequest"></a>
-
-### KeepAliveRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-
-
-
-
-
-
-<a name="atomix.election.KeepAliveResponse"></a>
-
-### KeepAliveResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
-
-
-
-
-
-
 <a name="atomix.election.PromoteRequest"></a>
 
 ### PromoteRequest
@@ -396,20 +363,19 @@
 <a name="atomix.election.LeaderElectionService"></a>
 
 ### LeaderElectionService
-Leader election service
+LeaderElectionService implements a distributed leader election
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.election.CreateRequest) | [CreateResponse](#atomix.election.CreateResponse) |  |
-| KeepAlive | [KeepAliveRequest](#atomix.election.KeepAliveRequest) | [KeepAliveResponse](#atomix.election.KeepAliveResponse) |  |
-| Close | [CloseRequest](#atomix.election.CloseRequest) | [CloseResponse](#atomix.election.CloseResponse) |  |
-| Enter | [EnterRequest](#atomix.election.EnterRequest) | [EnterResponse](#atomix.election.EnterResponse) |  |
-| Withdraw | [WithdrawRequest](#atomix.election.WithdrawRequest) | [WithdrawResponse](#atomix.election.WithdrawResponse) |  |
-| Anoint | [AnointRequest](#atomix.election.AnointRequest) | [AnointResponse](#atomix.election.AnointResponse) |  |
-| Promote | [PromoteRequest](#atomix.election.PromoteRequest) | [PromoteResponse](#atomix.election.PromoteResponse) |  |
-| Evict | [EvictRequest](#atomix.election.EvictRequest) | [EvictResponse](#atomix.election.EvictResponse) |  |
-| GetTerm | [GetTermRequest](#atomix.election.GetTermRequest) | [GetTermResponse](#atomix.election.GetTermResponse) |  |
-| Events | [EventRequest](#atomix.election.EventRequest) | [EventResponse](#atomix.election.EventResponse) stream |  |
+| Create | [CreateRequest](#atomix.election.CreateRequest) | [CreateResponse](#atomix.election.CreateResponse) | Create creates a LeaderElection instance |
+| Close | [CloseRequest](#atomix.election.CloseRequest) | [CloseResponse](#atomix.election.CloseResponse) | Close closes a LeaderElection instance |
+| Enter | [EnterRequest](#atomix.election.EnterRequest) | [EnterResponse](#atomix.election.EnterResponse) | Enter enters the leader election |
+| Withdraw | [WithdrawRequest](#atomix.election.WithdrawRequest) | [WithdrawResponse](#atomix.election.WithdrawResponse) | Withdraw withdraws a candidate from the leader election |
+| Anoint | [AnointRequest](#atomix.election.AnointRequest) | [AnointResponse](#atomix.election.AnointResponse) | Anoint anoints a candidate leader |
+| Promote | [PromoteRequest](#atomix.election.PromoteRequest) | [PromoteResponse](#atomix.election.PromoteResponse) | Promote promotes a candidate |
+| Evict | [EvictRequest](#atomix.election.EvictRequest) | [EvictResponse](#atomix.election.EvictResponse) | Evict evicts a candidate from the election |
+| GetTerm | [GetTermRequest](#atomix.election.GetTermRequest) | [GetTermResponse](#atomix.election.GetTermResponse) | GetTerm gets the current leadership term |
+| Events | [EventRequest](#atomix.election.EventRequest) | [EventResponse](#atomix.election.EventResponse) stream | Events listens for leadership events |
 
  
 

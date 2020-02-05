@@ -2,24 +2,14 @@ syntax = "proto3";
 
 package atomix.list;
 
-import "google/protobuf/duration.proto";
 import "atomix/headers/headers.proto";
 import "gogoproto/gogo.proto";
 
 message CreateRequest {
     atomix.headers.RequestHeader header = 1;
-    google.protobuf.Duration timeout = 2 [(gogoproto.stdduration) = true];
 }
 
 message CreateResponse {
-    atomix.headers.ResponseHeader header = 1;
-}
-
-message KeepAliveRequest {
-    atomix.headers.RequestHeader header = 1;
-}
-
-message KeepAliveResponse {
     atomix.headers.ResponseHeader header = 1;
 }
 
@@ -146,58 +136,42 @@ enum ResponseStatus {
     OUT_OF_BOUNDS = 3;
 }
 
-// List service
+// ListService implements a distributed list
 service ListService {
 
-    rpc Create (CreateRequest) returns (CreateResponse) {
+    // Create creates a list session
+    rpc Create (CreateRequest) returns (CreateResponse);
 
-    }
+    // Close closes a list
+    rpc Close (CloseRequest) returns (CloseResponse);
 
-    rpc KeepAlive (KeepAliveRequest) returns (KeepAliveResponse) {
+    // Size gets the number of elements in the list
+    rpc Size (SizeRequest) returns (SizeResponse);
 
-    }
+    // Contains returns whether the list contains a value
+    rpc Contains (ContainsRequest) returns (ContainsResponse);
 
-    rpc Close (CloseRequest) returns (CloseResponse) {
+    // Append appends a value to the list
+    rpc Append (AppendRequest) returns (AppendResponse);
 
-    }
+    // Insert inserts a value at a specific index in the list
+    rpc Insert (InsertRequest) returns (InsertResponse);
 
-    rpc Size (SizeRequest) returns (SizeResponse) {
+    // Get gets the value at an index in the list
+    rpc Get (GetRequest) returns (GetResponse);
 
-    }
+    // Set sets the value at an index in the list
+    rpc Set (SetRequest) returns (SetResponse);
 
-    rpc Contains (ContainsRequest) returns (ContainsResponse) {
+    // Remove removes an element from the list
+    rpc Remove (RemoveRequest) returns (RemoveResponse);
 
-    }
+    // Clear removes all elements from the list
+    rpc Clear (ClearRequest) returns (ClearResponse);
 
-    rpc Append (AppendRequest) returns (AppendResponse) {
+    // Events listens for change events
+    rpc Events (EventRequest) returns (stream EventResponse);
 
-    }
-
-    rpc Insert (InsertRequest) returns (InsertResponse) {
-
-    }
-
-    rpc Get (GetRequest) returns (GetResponse) {
-
-    }
-
-    rpc Set (SetRequest) returns (SetResponse) {
-
-    }
-
-    rpc Remove (RemoveRequest) returns (RemoveResponse) {
-
-    }
-
-    rpc Clear (ClearRequest) returns (ClearResponse) {
-
-    }
-
-    rpc Events (EventRequest) returns (stream EventResponse) {
-
-    }
-
-    rpc Iterate (IterateRequest) returns (stream IterateResponse) {
-
-    }
+    // Iterate streams all values in the list
+    rpc Iterate (IterateRequest) returns (stream IterateResponse);
 }

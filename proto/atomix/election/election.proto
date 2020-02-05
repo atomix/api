@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "atomix/headers/headers.proto";
 import "gogoproto/gogo.proto";
@@ -9,18 +8,9 @@ package atomix.election;
 
 message CreateRequest {
     atomix.headers.RequestHeader header = 1;
-    google.protobuf.Duration timeout = 2 [(gogoproto.stdduration) = true];
 }
 
 message CreateResponse {
-    atomix.headers.ResponseHeader header = 1;
-}
-
-message KeepAliveRequest {
-    atomix.headers.RequestHeader header = 1;
-}
-
-message KeepAliveResponse {
     atomix.headers.ResponseHeader header = 1;
 }
 
@@ -113,47 +103,34 @@ message Term {
     repeated string candidates = 4;
 }
 
-// Leader election service
+// LeaderElectionService implements a distributed leader election
 service LeaderElectionService {
 
-    rpc Create(CreateRequest) returns (CreateResponse) {
+    // Create creates a LeaderElection instance
+    rpc Create (CreateRequest) returns (CreateResponse);
 
-    }
+    // Close closes a LeaderElection instance
+    rpc Close (CloseRequest) returns (CloseResponse);
 
-    rpc KeepAlive(KeepAliveRequest) returns (KeepAliveResponse) {
+    // Enter enters the leader election
+    rpc Enter (EnterRequest) returns (EnterResponse);
 
-    }
+    // Withdraw withdraws a candidate from the leader election
+    rpc Withdraw (WithdrawRequest) returns (WithdrawResponse);
 
-    rpc Close(CloseRequest) returns (CloseResponse) {
+    // Anoint anoints a candidate leader
+    rpc Anoint (AnointRequest) returns (AnointResponse);
 
-    }
+    // Promote promotes a candidate
+    rpc Promote (PromoteRequest) returns (PromoteResponse);
 
-    rpc Enter(EnterRequest) returns (EnterResponse) {
+    // Evict evicts a candidate from the election
+    rpc Evict (EvictRequest) returns (EvictResponse);
 
-    }
+    // GetTerm gets the current leadership term
+    rpc GetTerm (GetTermRequest) returns (GetTermResponse);
 
-    rpc Withdraw(WithdrawRequest) returns (WithdrawResponse) {
-
-    }
-
-    rpc Anoint(AnointRequest) returns (AnointResponse) {
-
-    }
-
-    rpc Promote(PromoteRequest) returns (PromoteResponse) {
-
-    }
-
-    rpc Evict(EvictRequest) returns (EvictResponse) {
-
-    }
-
-    rpc GetTerm(GetTermRequest) returns (GetTermResponse) {
-
-    }
-
-    rpc Events(EventRequest) returns (stream EventResponse) {
-
-    }
+    // Events listens for leadership events
+    rpc Events (EventRequest) returns (stream EventResponse);
 
 }

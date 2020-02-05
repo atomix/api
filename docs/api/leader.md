@@ -12,8 +12,6 @@
     - [EventResponse](#atomix.leader.EventResponse)
     - [GetRequest](#atomix.leader.GetRequest)
     - [GetResponse](#atomix.leader.GetResponse)
-    - [KeepAliveRequest](#atomix.leader.KeepAliveRequest)
-    - [KeepAliveResponse](#atomix.leader.KeepAliveResponse)
     - [Latch](#atomix.leader.Latch)
     - [LatchRequest](#atomix.leader.LatchRequest)
     - [LatchResponse](#atomix.leader.LatchResponse)
@@ -75,7 +73,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-| timeout | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
 
 
 
@@ -160,36 +157,6 @@
 
 
 
-<a name="atomix.leader.KeepAliveRequest"></a>
-
-### KeepAliveRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-
-
-
-
-
-
-<a name="atomix.leader.KeepAliveResponse"></a>
-
-### KeepAliveResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
-
-
-
-
-
-
 <a name="atomix.leader.Latch"></a>
 
 ### Latch
@@ -263,12 +230,11 @@ Leader latch service
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.leader.CreateRequest) | [CreateResponse](#atomix.leader.CreateResponse) |  |
-| KeepAlive | [KeepAliveRequest](#atomix.leader.KeepAliveRequest) | [KeepAliveResponse](#atomix.leader.KeepAliveResponse) |  |
-| Close | [CloseRequest](#atomix.leader.CloseRequest) | [CloseResponse](#atomix.leader.CloseResponse) |  |
-| Latch | [LatchRequest](#atomix.leader.LatchRequest) | [LatchResponse](#atomix.leader.LatchResponse) |  |
-| Get | [GetRequest](#atomix.leader.GetRequest) | [GetResponse](#atomix.leader.GetResponse) |  |
-| Events | [EventRequest](#atomix.leader.EventRequest) | [EventResponse](#atomix.leader.EventResponse) stream |  |
+| Create | [CreateRequest](#atomix.leader.CreateRequest) | [CreateResponse](#atomix.leader.CreateResponse) | Create creates a leader latch |
+| Close | [CloseRequest](#atomix.leader.CloseRequest) | [CloseResponse](#atomix.leader.CloseResponse) | Close closes a leader latch |
+| Latch | [LatchRequest](#atomix.leader.LatchRequest) | [LatchResponse](#atomix.leader.LatchResponse) | Latch attempts to acquire the leader latch |
+| Get | [GetRequest](#atomix.leader.GetRequest) | [GetResponse](#atomix.leader.GetResponse) | Get gets the current leader |
+| Events | [EventRequest](#atomix.leader.EventRequest) | [EventResponse](#atomix.leader.EventResponse) stream | Events listens for leader change events |
 
  
 

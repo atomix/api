@@ -22,8 +22,6 @@
     - [InsertResponse](#atomix.list.InsertResponse)
     - [IterateRequest](#atomix.list.IterateRequest)
     - [IterateResponse](#atomix.list.IterateResponse)
-    - [KeepAliveRequest](#atomix.list.KeepAliveRequest)
-    - [KeepAliveResponse](#atomix.list.KeepAliveResponse)
     - [RemoveRequest](#atomix.list.RemoveRequest)
     - [RemoveResponse](#atomix.list.RemoveResponse)
     - [SetRequest](#atomix.list.SetRequest)
@@ -183,7 +181,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-| timeout | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
 
 
 
@@ -336,36 +333,6 @@
 
 
 
-<a name="atomix.list.KeepAliveRequest"></a>
-
-### KeepAliveRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-
-
-
-
-
-
-<a name="atomix.list.KeepAliveResponse"></a>
-
-### KeepAliveResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
-
-
-
-
-
-
 <a name="atomix.list.RemoveRequest"></a>
 
 ### RemoveRequest
@@ -499,23 +466,22 @@
 <a name="atomix.list.ListService"></a>
 
 ### ListService
-List service
+ListService implements a distributed list
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.list.CreateRequest) | [CreateResponse](#atomix.list.CreateResponse) |  |
-| KeepAlive | [KeepAliveRequest](#atomix.list.KeepAliveRequest) | [KeepAliveResponse](#atomix.list.KeepAliveResponse) |  |
-| Close | [CloseRequest](#atomix.list.CloseRequest) | [CloseResponse](#atomix.list.CloseResponse) |  |
-| Size | [SizeRequest](#atomix.list.SizeRequest) | [SizeResponse](#atomix.list.SizeResponse) |  |
-| Contains | [ContainsRequest](#atomix.list.ContainsRequest) | [ContainsResponse](#atomix.list.ContainsResponse) |  |
-| Append | [AppendRequest](#atomix.list.AppendRequest) | [AppendResponse](#atomix.list.AppendResponse) |  |
-| Insert | [InsertRequest](#atomix.list.InsertRequest) | [InsertResponse](#atomix.list.InsertResponse) |  |
-| Get | [GetRequest](#atomix.list.GetRequest) | [GetResponse](#atomix.list.GetResponse) |  |
-| Set | [SetRequest](#atomix.list.SetRequest) | [SetResponse](#atomix.list.SetResponse) |  |
-| Remove | [RemoveRequest](#atomix.list.RemoveRequest) | [RemoveResponse](#atomix.list.RemoveResponse) |  |
-| Clear | [ClearRequest](#atomix.list.ClearRequest) | [ClearResponse](#atomix.list.ClearResponse) |  |
-| Events | [EventRequest](#atomix.list.EventRequest) | [EventResponse](#atomix.list.EventResponse) stream |  |
-| Iterate | [IterateRequest](#atomix.list.IterateRequest) | [IterateResponse](#atomix.list.IterateResponse) stream |  |
+| Create | [CreateRequest](#atomix.list.CreateRequest) | [CreateResponse](#atomix.list.CreateResponse) | Create creates a list session |
+| Close | [CloseRequest](#atomix.list.CloseRequest) | [CloseResponse](#atomix.list.CloseResponse) | Close closes a list |
+| Size | [SizeRequest](#atomix.list.SizeRequest) | [SizeResponse](#atomix.list.SizeResponse) | Size gets the number of elements in the list |
+| Contains | [ContainsRequest](#atomix.list.ContainsRequest) | [ContainsResponse](#atomix.list.ContainsResponse) | Contains returns whether the list contains a value |
+| Append | [AppendRequest](#atomix.list.AppendRequest) | [AppendResponse](#atomix.list.AppendResponse) | Append appends a value to the list |
+| Insert | [InsertRequest](#atomix.list.InsertRequest) | [InsertResponse](#atomix.list.InsertResponse) | Insert inserts a value at a specific index in the list |
+| Get | [GetRequest](#atomix.list.GetRequest) | [GetResponse](#atomix.list.GetResponse) | Get gets the value at an index in the list |
+| Set | [SetRequest](#atomix.list.SetRequest) | [SetResponse](#atomix.list.SetResponse) | Set sets the value at an index in the list |
+| Remove | [RemoveRequest](#atomix.list.RemoveRequest) | [RemoveResponse](#atomix.list.RemoveResponse) | Remove removes an element from the list |
+| Clear | [ClearRequest](#atomix.list.ClearRequest) | [ClearResponse](#atomix.list.ClearResponse) | Clear removes all elements from the list |
+| Events | [EventRequest](#atomix.list.EventRequest) | [EventResponse](#atomix.list.EventResponse) stream | Events listens for change events |
+| Iterate | [IterateRequest](#atomix.list.IterateRequest) | [IterateResponse](#atomix.list.IterateResponse) stream | Iterate streams all values in the list |
 
  
 

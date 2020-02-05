@@ -3,37 +3,33 @@
 
 ## Table of Contents
 
-- [atomix/lock/lock.proto](#atomix/lock/lock.proto)
-    - [CloseRequest](#atomix.lock.CloseRequest)
-    - [CloseResponse](#atomix.lock.CloseResponse)
-    - [CreateRequest](#atomix.lock.CreateRequest)
-    - [CreateResponse](#atomix.lock.CreateResponse)
-    - [IsLockedRequest](#atomix.lock.IsLockedRequest)
-    - [IsLockedResponse](#atomix.lock.IsLockedResponse)
-    - [LockRequest](#atomix.lock.LockRequest)
-    - [LockResponse](#atomix.lock.LockResponse)
-    - [UnlockRequest](#atomix.lock.UnlockRequest)
-    - [UnlockResponse](#atomix.lock.UnlockResponse)
+- [atomix/session/session.proto](#atomix/session/session.proto)
+    - [CloseSessionRequest](#atomix.election.CloseSessionRequest)
+    - [CloseSessionResponse](#atomix.election.CloseSessionResponse)
+    - [KeepAliveRequest](#atomix.election.KeepAliveRequest)
+    - [KeepAliveResponse](#atomix.election.KeepAliveResponse)
+    - [OpenSessionRequest](#atomix.election.OpenSessionRequest)
+    - [OpenSessionResponse](#atomix.election.OpenSessionResponse)
   
   
   
-    - [LockService](#atomix.lock.LockService)
+    - [SessionService](#atomix.election.SessionService)
   
 
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="atomix/lock/lock.proto"></a>
+<a name="atomix/session/session.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## atomix/lock/lock.proto
+## atomix/session/session.proto
 
 
 
-<a name="atomix.lock.CloseRequest"></a>
+<a name="atomix.election.CloseSessionRequest"></a>
 
-### CloseRequest
+### CloseSessionRequest
 
 
 
@@ -47,9 +43,9 @@
 
 
 
-<a name="atomix.lock.CloseResponse"></a>
+<a name="atomix.election.CloseSessionResponse"></a>
 
-### CloseResponse
+### CloseSessionResponse
 
 
 
@@ -62,9 +58,9 @@
 
 
 
-<a name="atomix.lock.CreateRequest"></a>
+<a name="atomix.election.KeepAliveRequest"></a>
 
-### CreateRequest
+### KeepAliveRequest
 
 
 
@@ -77,56 +73,24 @@
 
 
 
-<a name="atomix.lock.CreateResponse"></a>
+<a name="atomix.election.KeepAliveResponse"></a>
 
-### CreateResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
-
-
-
-
-
-
-<a name="atomix.lock.IsLockedRequest"></a>
-
-### IsLockedRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-| version | [uint64](#uint64) |  |  |
-
-
-
-
-
-
-<a name="atomix.lock.IsLockedResponse"></a>
-
-### IsLockedResponse
+### KeepAliveResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
-| isLocked | [bool](#bool) |  |  |
 
 
 
 
 
 
-<a name="atomix.lock.LockRequest"></a>
+<a name="atomix.election.OpenSessionRequest"></a>
 
-### LockRequest
+### OpenSessionRequest
 
 
 
@@ -140,48 +104,15 @@
 
 
 
-<a name="atomix.lock.LockResponse"></a>
+<a name="atomix.election.OpenSessionResponse"></a>
 
-### LockResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
-| version | [uint64](#uint64) |  |  |
-
-
-
-
-
-
-<a name="atomix.lock.UnlockRequest"></a>
-
-### UnlockRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-| version | [uint64](#uint64) |  |  |
-
-
-
-
-
-
-<a name="atomix.lock.UnlockResponse"></a>
-
-### UnlockResponse
+### OpenSessionResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
-| unlocked | [bool](#bool) |  |  |
 
 
 
@@ -194,18 +125,16 @@
  
 
 
-<a name="atomix.lock.LockService"></a>
+<a name="atomix.election.SessionService"></a>
 
-### LockService
-LockService implements a distributed lock
+### SessionService
+Session service
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.lock.CreateRequest) | [CreateResponse](#atomix.lock.CreateResponse) | Create creates a lock |
-| Close | [CloseRequest](#atomix.lock.CloseRequest) | [CloseResponse](#atomix.lock.CloseResponse) | Close closes a lock |
-| Lock | [LockRequest](#atomix.lock.LockRequest) | [LockResponse](#atomix.lock.LockResponse) | Lock attempts to acquire the lock |
-| Unlock | [UnlockRequest](#atomix.lock.UnlockRequest) | [UnlockResponse](#atomix.lock.UnlockResponse) | Unlock releases the lock |
-| IsLocked | [IsLockedRequest](#atomix.lock.IsLockedRequest) | [IsLockedResponse](#atomix.lock.IsLockedResponse) | IsLocked checks whether the lock is held |
+| OpenSession | [OpenSessionRequest](#atomix.election.OpenSessionRequest) | [OpenSessionResponse](#atomix.election.OpenSessionResponse) | OpenSession opens a new session |
+| KeepAlive | [KeepAliveRequest](#atomix.election.KeepAliveRequest) | [KeepAliveResponse](#atomix.election.KeepAliveResponse) | KeepAlive keeps a session alive |
+| CloseSession | [CloseSessionRequest](#atomix.election.CloseSessionRequest) | [CloseSessionResponse](#atomix.election.CloseSessionResponse) | CloseSession closes a session |
 
  
 

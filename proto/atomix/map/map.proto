@@ -9,18 +9,9 @@ import "gogoproto/gogo.proto";
 
 message CreateRequest {
     atomix.headers.RequestHeader header = 1;
-    google.protobuf.Duration timeout = 2 [(gogoproto.stdduration) = true];
 }
 
 message CreateResponse {
-    atomix.headers.ResponseHeader header = 1;
-}
-
-message KeepAliveRequest {
-    atomix.headers.RequestHeader header = 1;
-}
-
-message KeepAliveResponse {
     atomix.headers.ResponseHeader header = 1;
 }
 
@@ -167,43 +158,40 @@ enum ResponseStatus {
     PRECONDITION_FAILED = 3;
 }
 
-// Map service
+// MapService implements a distributed map
 service MapService {
 
-    rpc Create (CreateRequest) returns (CreateResponse) {
-    }
+    // Create creates an indexed map
+    rpc Create (CreateRequest) returns (CreateResponse);
 
-    rpc KeepAlive (KeepAliveRequest) returns (KeepAliveResponse) {
-    }
+    // Close closes an indexed map
+    rpc Close (CloseRequest) returns (CloseResponse);
 
-    rpc Close (CloseRequest) returns (CloseResponse) {
-    }
+    // Size returns the size of the map
+    rpc Size (SizeRequest) returns (SizeResponse);
 
-    rpc Size (SizeRequest) returns (SizeResponse) {
-    }
+    // Exists checks whether a key exists in the map
+    rpc Exists (ExistsRequest) returns (ExistsResponse);
 
-    rpc Exists (ExistsRequest) returns (ExistsResponse) {
-    }
+    // Put puts an entry into the map
+    rpc Put (PutRequest) returns (PutResponse);
 
-    rpc Put (PutRequest) returns (PutResponse) {
-    }
+    // Replace performs a check-and-set operation on an entry in the map
+    rpc Replace (ReplaceRequest) returns (ReplaceResponse);
 
-    rpc Replace (ReplaceRequest) returns (ReplaceResponse) {
-    }
+    // Get gets the entry for a key
+    rpc Get (GetRequest) returns (GetResponse);
 
-    rpc Get (GetRequest) returns (GetResponse) {
-    }
+    // Remove removes an entry from the map
+    rpc Remove (RemoveRequest) returns (RemoveResponse);
 
-    rpc Remove (RemoveRequest) returns (RemoveResponse) {
-    }
+    // Clear removes all entries from the map
+    rpc Clear (ClearRequest) returns (ClearResponse);
 
-    rpc Clear (ClearRequest) returns (ClearResponse) {
-    }
+    // Events listens for change events
+    rpc Events (EventRequest) returns (stream EventResponse);
 
-    rpc Events (EventRequest) returns (stream EventResponse) {
-    }
-
-    rpc Entries (EntriesRequest) returns (stream EntriesResponse) {
-    }
+    // Entries lists all entries in the map
+    rpc Entries (EntriesRequest) returns (stream EntriesResponse);
 
 }
