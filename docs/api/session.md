@@ -4,16 +4,16 @@
 ## Table of Contents
 
 - [atomix/session/session.proto](#atomix/session/session.proto)
-    - [CloseSessionRequest](#atomix.election.CloseSessionRequest)
-    - [CloseSessionResponse](#atomix.election.CloseSessionResponse)
-    - [KeepAliveRequest](#atomix.election.KeepAliveRequest)
-    - [KeepAliveResponse](#atomix.election.KeepAliveResponse)
-    - [OpenSessionRequest](#atomix.election.OpenSessionRequest)
-    - [OpenSessionResponse](#atomix.election.OpenSessionResponse)
+    - [CloseSessionRequest](#atomix.session.CloseSessionRequest)
+    - [CloseSessionResponse](#atomix.session.CloseSessionResponse)
+    - [KeepAliveRequest](#atomix.session.KeepAliveRequest)
+    - [KeepAliveResponse](#atomix.session.KeepAliveResponse)
+    - [OpenSessionRequest](#atomix.session.OpenSessionRequest)
+    - [OpenSessionResponse](#atomix.session.OpenSessionResponse)
   
   
   
-    - [SessionService](#atomix.election.SessionService)
+    - [SessionService](#atomix.session.SessionService)
   
 
 - [Scalar Value Types](#scalar-value-types)
@@ -27,7 +27,7 @@
 
 
 
-<a name="atomix.election.CloseSessionRequest"></a>
+<a name="atomix.session.CloseSessionRequest"></a>
 
 ### CloseSessionRequest
 
@@ -43,7 +43,7 @@
 
 
 
-<a name="atomix.election.CloseSessionResponse"></a>
+<a name="atomix.session.CloseSessionResponse"></a>
 
 ### CloseSessionResponse
 
@@ -58,7 +58,7 @@
 
 
 
-<a name="atomix.election.KeepAliveRequest"></a>
+<a name="atomix.session.KeepAliveRequest"></a>
 
 ### KeepAliveRequest
 
@@ -73,7 +73,7 @@
 
 
 
-<a name="atomix.election.KeepAliveResponse"></a>
+<a name="atomix.session.KeepAliveResponse"></a>
 
 ### KeepAliveResponse
 
@@ -88,7 +88,7 @@
 
 
 
-<a name="atomix.election.OpenSessionRequest"></a>
+<a name="atomix.session.OpenSessionRequest"></a>
 
 ### OpenSessionRequest
 
@@ -104,7 +104,7 @@
 
 
 
-<a name="atomix.election.OpenSessionResponse"></a>
+<a name="atomix.session.OpenSessionResponse"></a>
 
 ### OpenSessionResponse
 
@@ -125,16 +125,16 @@
  
 
 
-<a name="atomix.election.SessionService"></a>
+<a name="atomix.session.SessionService"></a>
 
 ### SessionService
 Session service
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| OpenSession | [OpenSessionRequest](#atomix.election.OpenSessionRequest) | [OpenSessionResponse](#atomix.election.OpenSessionResponse) | OpenSession opens a new session |
-| KeepAlive | [KeepAliveRequest](#atomix.election.KeepAliveRequest) | [KeepAliveResponse](#atomix.election.KeepAliveResponse) | KeepAlive keeps a session alive |
-| CloseSession | [CloseSessionRequest](#atomix.election.CloseSessionRequest) | [CloseSessionResponse](#atomix.election.CloseSessionResponse) | CloseSession closes a session |
+| OpenSession | [OpenSessionRequest](#atomix.session.OpenSessionRequest) | [OpenSessionResponse](#atomix.session.OpenSessionResponse) | OpenSession opens a new session |
+| KeepAlive | [KeepAliveRequest](#atomix.session.KeepAliveRequest) | [KeepAliveResponse](#atomix.session.KeepAliveResponse) | KeepAlive keeps a session alive |
+| CloseSession | [CloseSessionRequest](#atomix.session.CloseSessionRequest) | [CloseSessionResponse](#atomix.session.CloseSessionResponse) | CloseSession closes a session |
 
  
 
