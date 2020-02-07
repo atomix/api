@@ -20,8 +20,6 @@
     - [FirstEntryResponse](#atomix.log.FirstEntryResponse)
     - [GetRequest](#atomix.log.GetRequest)
     - [GetResponse](#atomix.log.GetResponse)
-    - [KeepAliveRequest](#atomix.log.KeepAliveRequest)
-    - [KeepAliveResponse](#atomix.log.KeepAliveResponse)
     - [LastEntryRequest](#atomix.log.LastEntryRequest)
     - [LastEntryResponse](#atomix.log.LastEntryResponse)
     - [NextEntryRequest](#atomix.log.NextEntryRequest)
@@ -314,36 +312,6 @@
 
 
 
-<a name="atomix.log.KeepAliveRequest"></a>
-
-### KeepAliveRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
-
-
-
-
-
-
-<a name="atomix.log.KeepAliveResponse"></a>
-
-### KeepAliveResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
-
-
-
-
-
-
 <a name="atomix.log.LastEntryRequest"></a>
 
 ### LastEntryRequest
@@ -553,7 +521,6 @@ LogService log service
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Create | [CreateRequest](#atomix.log.CreateRequest) | [CreateResponse](#atomix.log.CreateResponse) |  |
-| KeepAlive | [KeepAliveRequest](#atomix.log.KeepAliveRequest) | [KeepAliveResponse](#atomix.log.KeepAliveResponse) |  |
 | Close | [CloseRequest](#atomix.log.CloseRequest) | [CloseResponse](#atomix.log.CloseResponse) |  |
 | Size | [SizeRequest](#atomix.log.SizeRequest) | [SizeResponse](#atomix.log.SizeResponse) |  |
 | Exists | [ExistsRequest](#atomix.log.ExistsRequest) | [ExistsResponse](#atomix.log.ExistsResponse) |  |

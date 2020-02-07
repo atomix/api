@@ -16,14 +16,6 @@ message CreateResponse {
     atomix.headers.ResponseHeader header = 1;
 }
 
-message KeepAliveRequest {
-    atomix.headers.RequestHeader header = 1;
-}
-
-message KeepAliveResponse {
-    atomix.headers.ResponseHeader header = 1;
-}
-
 message CloseRequest {
     atomix.headers.RequestHeader header = 1;
     bool delete = 2;
@@ -178,8 +170,6 @@ message EventResponse {
 service LogService {
 
     rpc Create (CreateRequest) returns (CreateResponse);
-
-    rpc KeepAlive (KeepAliveRequest) returns (KeepAliveResponse);
 
     rpc Close (CloseRequest) returns (CloseResponse);
 
