@@ -2,14 +2,12 @@ syntax = "proto3";
 
 package atomix.log;
 
-import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "atomix/headers/headers.proto";
 import "gogoproto/gogo.proto";
 
 message CreateRequest {
     atomix.headers.RequestHeader header = 1;
-    google.protobuf.Duration timeout = 2 [(gogoproto.stdduration) = true];
 }
 
 message CreateResponse {
@@ -55,7 +53,6 @@ message AppendResponse {
     ResponseStatus status = 2;
     int64 index = 3;
     google.protobuf.Timestamp timestamp = 4 [(gogoproto.stdtime) = true, (gogoproto.nullable) = false];
-    bytes previous_value = 5;
 }
 
 message GetRequest {
