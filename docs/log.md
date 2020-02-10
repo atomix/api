@@ -12,6 +12,8 @@
     - [CloseResponse](#atomix.log.CloseResponse)
     - [CreateRequest](#atomix.log.CreateRequest)
     - [CreateResponse](#atomix.log.CreateResponse)
+    - [EntriesRequest](#atomix.log.EntriesRequest)
+    - [EntriesResponse](#atomix.log.EntriesResponse)
     - [EventRequest](#atomix.log.EventRequest)
     - [EventResponse](#atomix.log.EventResponse)
     - [ExistsRequest](#atomix.log.ExistsRequest)
@@ -169,6 +171,39 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
+
+
+
+
+
+
+<a name="atomix.log.EntriesRequest"></a>
+
+### EntriesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
+
+
+
+
+
+
+<a name="atomix.log.EntriesResponse"></a>
+
+### EntriesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
+| index | [int64](#int64) |  |  |
+| value | [bytes](#bytes) |  |  |
+| timestamp | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
 
 
 
@@ -518,19 +553,20 @@ LogService log service
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateRequest](#atomix.log.CreateRequest) | [CreateResponse](#atomix.log.CreateResponse) |  |
-| Close | [CloseRequest](#atomix.log.CloseRequest) | [CloseResponse](#atomix.log.CloseResponse) |  |
-| Size | [SizeRequest](#atomix.log.SizeRequest) | [SizeResponse](#atomix.log.SizeResponse) |  |
-| Exists | [ExistsRequest](#atomix.log.ExistsRequest) | [ExistsResponse](#atomix.log.ExistsResponse) |  |
-| Append | [AppendRequest](#atomix.log.AppendRequest) | [AppendResponse](#atomix.log.AppendResponse) |  |
-| Get | [GetRequest](#atomix.log.GetRequest) | [GetResponse](#atomix.log.GetResponse) |  |
-| FirstEntry | [FirstEntryRequest](#atomix.log.FirstEntryRequest) | [FirstEntryResponse](#atomix.log.FirstEntryResponse) |  |
-| LastEntry | [LastEntryRequest](#atomix.log.LastEntryRequest) | [LastEntryResponse](#atomix.log.LastEntryResponse) |  |
-| PrevEntry | [PrevEntryRequest](#atomix.log.PrevEntryRequest) | [PrevEntryResponse](#atomix.log.PrevEntryResponse) |  |
-| NextEntry | [NextEntryRequest](#atomix.log.NextEntryRequest) | [NextEntryResponse](#atomix.log.NextEntryResponse) |  |
-| Remove | [RemoveRequest](#atomix.log.RemoveRequest) | [RemoveResponse](#atomix.log.RemoveResponse) |  |
-| Clear | [ClearRequest](#atomix.log.ClearRequest) | [ClearResponse](#atomix.log.ClearResponse) |  |
-| Events | [EventRequest](#atomix.log.EventRequest) | [EventResponse](#atomix.log.EventResponse) stream |  |
+| Create | [CreateRequest](#atomix.log.CreateRequest) | [CreateResponse](#atomix.log.CreateResponse) | Create creates a log |
+| Close | [CloseRequest](#atomix.log.CloseRequest) | [CloseResponse](#atomix.log.CloseResponse) | Close closes a log |
+| Size | [SizeRequest](#atomix.log.SizeRequest) | [SizeResponse](#atomix.log.SizeResponse) | Size returns the size of the log |
+| Exists | [ExistsRequest](#atomix.log.ExistsRequest) | [ExistsResponse](#atomix.log.ExistsResponse) | Exists checks whether an index exists in the log |
+| Append | [AppendRequest](#atomix.log.AppendRequest) | [AppendResponse](#atomix.log.AppendResponse) | Appends appends an entry into the log |
+| Get | [GetRequest](#atomix.log.GetRequest) | [GetResponse](#atomix.log.GetResponse) | Get gets the entry for an index |
+| FirstEntry | [FirstEntryRequest](#atomix.log.FirstEntryRequest) | [FirstEntryResponse](#atomix.log.FirstEntryResponse) | FirstEntry gets the first entry in the log |
+| LastEntry | [LastEntryRequest](#atomix.log.LastEntryRequest) | [LastEntryResponse](#atomix.log.LastEntryResponse) | LastEntry gets the last entry in the log |
+| PrevEntry | [PrevEntryRequest](#atomix.log.PrevEntryRequest) | [PrevEntryResponse](#atomix.log.PrevEntryResponse) | PrevEntry gets the previous entry in the log |
+| NextEntry | [NextEntryRequest](#atomix.log.NextEntryRequest) | [NextEntryResponse](#atomix.log.NextEntryResponse) | NextEntry gets the next entry in the log |
+| Remove | [RemoveRequest](#atomix.log.RemoveRequest) | [RemoveResponse](#atomix.log.RemoveResponse) | Remove removes an entry from the log |
+| Clear | [ClearRequest](#atomix.log.ClearRequest) | [ClearResponse](#atomix.log.ClearResponse) | Clear removes all entries from the log |
+| Events | [EventRequest](#atomix.log.EventRequest) | [EventResponse](#atomix.log.EventResponse) stream | Events listens for change events |
+| Entries | [EntriesRequest](#atomix.log.EntriesRequest) | [EntriesResponse](#atomix.log.EntriesResponse) stream | Entries lists all entries in the log |
 
  
 
