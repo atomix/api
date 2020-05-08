@@ -19,6 +19,8 @@ cache:
   directories:
     - $HOME/gopath/pkg/mod         # Cache the Go modules
 
+before_script:
+  - pushd .. && git clone https://github.com/onosproject/build-tools.git && popd
 
 jobs:
   include:
@@ -27,4 +29,4 @@ jobs:
     - stage: docs build
       if: type != pull_request
       script:
-        - sh build/bin/trigger-docs-travis $TRAVIS_API_TOKEN
+        - sh ../build-tools/build/travis/trigger-travis atomix docs master "`git rev-parse --short HEAD`" $TRAVIS_API_TOKEN
