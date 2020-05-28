@@ -4,6 +4,8 @@
 ## Table of Contents
 
 - [atomix/value/value.proto](#atomix/value/value.proto)
+    - [CheckAndSetRequest](#atomix.value.CheckAndSetRequest)
+    - [CheckAndSetResponse](#atomix.value.CheckAndSetResponse)
     - [CloseRequest](#atomix.value.CloseRequest)
     - [CloseResponse](#atomix.value.CloseResponse)
     - [CreateRequest](#atomix.value.CreateRequest)
@@ -29,6 +31,39 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## atomix/value/value.proto
+
+
+
+<a name="atomix.value.CheckAndSetRequest"></a>
+
+### CheckAndSetRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| header | [atomix.headers.RequestHeader](#atomix.headers.RequestHeader) |  |  |
+| expect | [int64](#int64) |  |  |
+| update | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="atomix.value.CheckAndSetResponse"></a>
+
+### CheckAndSetResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| header | [atomix.headers.ResponseHeader](#atomix.headers.ResponseHeader) |  |  |
+| succeeded | [bool](#bool) |  |  |
+
+
+
 
 
 
@@ -223,6 +258,7 @@ ValueService implements a distributed atomic value
 | Close | [CloseRequest](#atomix.value.CloseRequest) | [CloseResponse](#atomix.value.CloseResponse) | Close closes the value session |
 | Set | [SetRequest](#atomix.value.SetRequest) | [SetResponse](#atomix.value.SetResponse) | Set sets the value |
 | Get | [GetRequest](#atomix.value.GetRequest) | [GetResponse](#atomix.value.GetResponse) | Get gets the value |
+| CheckAndSet | [CheckAndSetRequest](#atomix.value.CheckAndSetRequest) | [CheckAndSetResponse](#atomix.value.CheckAndSetResponse) | CheckAndSet performs a check-and-set operation on the value |
 | Events | [EventRequest](#atomix.value.EventRequest) | [EventResponse](#atomix.value.EventResponse) stream | Events listens for value change events |
 
  

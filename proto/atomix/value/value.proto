@@ -45,6 +45,17 @@ message SetResponse {
     bool succeeded = 3;
 }
 
+message CheckAndSetRequest {
+    atomix.headers.RequestHeader header = 1;
+    int64 expect = 2;
+    int64 update = 3;
+}
+
+message CheckAndSetResponse {
+    atomix.headers.ResponseHeader header = 1;
+    bool succeeded = 2;
+}
+
 message EventRequest {
     atomix.headers.RequestHeader header = 1;
 }
@@ -76,6 +87,9 @@ service ValueService {
 
     // Get gets the value
     rpc Get (GetRequest) returns (GetResponse);
+    
+    // CheckAndSet performs a check-and-set operation on the value
+    rpc CheckAndSet (CheckAndSetRequest) returns (CheckAndSetResponse);
 
     // Events listens for value change events
     rpc Events (EventRequest) returns (stream EventResponse);
